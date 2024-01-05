@@ -1,0 +1,38 @@
+<p-panel header="Pipes numericos" class="p-1">
+  <p>Pipes incluidos en angular - usualmente en el Common Module</p>
+</p-panel>
+
+<div class="grid">
+  <div class="col-12 md:col-4">
+    <p-card header="Ventas netas" subheader="del presente año">
+      <!-- 1.2-2 = Significa que deseo de 2 decimales hasta 4 (Si el valor tiene mas de 2 decimales, entonces mostrara 4) -->
+      <ul>
+        <li>{{ totalSells + 1203 | number : "1.2-2" }}</li>
+        <li>{{ totalSells + 1203 | number : "1.2-4" }}</li>
+        <li>{{ totalSells + 1203 | number : "1.6-6" }}</li>
+      </ul>
+    </p-card>
+  </div>
+
+  <div class="col-12 md:col-4">
+    <p-card header="Ventas brutas" subheader="del presente año">
+      <!-- 1.2-2 = Significa que deseo de 2 decimales hasta 4 (Si el valor tiene mas de 2 decimales, entonces mostrara 4) -->
+      <ul>
+        <li>{{ totalSells | currency:'L. ' }}</li>
+        <li>{{ totalSells | currency:'USD' }}</li>
+        <li>{{ totalSells | currency:'USD':'symbol-narrow' }}</li>
+        <li>{{ totalSells | currency:'HNL':'symbol-narrow':'1.6-6' }}</li>
+      </ul>
+    </p-card>
+  </div>
+
+  <div class="col-12 md:col-4">
+    <p-card header="Ganancias porcentual" subheader="del presente año">
+      <!-- 1.2-2 = Significa que deseo de 2 decimales hasta 4 (Si el valor tiene mas de 2 decimales, entonces mostrara 4) -->
+      <ul>
+        <li>{{ percent | percent }}</li>
+        <li>{{ percent | percent: '1.2-2' }}</li>
+      </ul>
+    </p-card>
+  </div>
+</div>

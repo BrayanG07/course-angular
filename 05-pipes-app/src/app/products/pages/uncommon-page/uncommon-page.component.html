@@ -1,0 +1,69 @@
+<p-panel header="Pipes no comunes" class="p-1">
+  <p>Pipes incluidos en angular - usualmente en el Common Module</p>
+</p-panel>
+
+<div class="grid">
+  <div class="col-12 md:col-6">
+    <p-fieldset legend="i18nSelect Pipe" [toggleable]="true">
+      <p>
+        Saludos {{ name }}, es un place
+        {{ gender | i18nSelect : invitationMap }} a nuestro evento
+      </p>
+
+      <p-button (click)="changeClient()" label="Cambiar persona"></p-button>
+    </p-fieldset>
+  </div>
+
+  <div class="col-12 md:col-6">
+    <p-fieldset legend="i18nPlural Pipe" [toggleable]="true">
+      <p>{{ clients.length | i18nPlural : clientsMap }}</p>
+      <p-button (click)="removeClient()" label="Borrar cliente"></p-button>
+    </p-fieldset>
+  </div>
+
+  <div class="col-12 md:col-6">
+    <p-fieldset legend="Slice Pipe" [toggleable]="true">
+      <b>Original</b>
+      <pre>{{ clients }}</pre>
+
+
+      <!-- slice:0:2 = le estoy diciendo que solo tome los primeros dos elementos y elimine los demas -->
+      <b>Slice:0:2</b>
+      <pre>{{ clients | slice:0:2 }}</pre>
+
+      <b>slice:1:2</b>
+      <pre>{{ clients | slice:1:2 }}</pre>
+
+      <!-- -1 = Empieza a elimina desde el fina hasta el inicio, por lo tanto -1 remueve el ultimo elemento -->
+      <b>slice:0:-1</b>
+      <pre>{{ clients | slice:0:-1 }}</pre>
+
+    </p-fieldset>
+  </div>
+
+  <div class="col-12 md:col-6">
+    <p-fieldset legend="Json Pipe" [toggleable]="true">
+      <pre>{{ person | json }}</pre>
+    </p-fieldset>
+  </div>
+  <div class="col-12 md:col-6">
+    <p-fieldset legend="KeyValue Pipe" [toggleable]="true">
+      <p>Sirve para convertir un objeto en un arreglo</p>
+
+      <ul>
+        <li *ngFor="let item of person | keyvalue">
+          <b>{{ item.key | titlecase }}: </b> {{ item.value }}
+        </li>
+      </ul>
+    </p-fieldset>
+  </div>
+  <div class="col-12 md:col-6">
+    <p-fieldset legend="Async Pipe" [toggleable]="true">
+      <pre *ngIf="!(myObservableTimer | async)">Resolviendo observable</pre>
+      <pre>{{ myObservableTimer | async }}</pre>
+
+      <pre *ngIf="!(promiseValue | async)">Resolviendo promesa</pre>
+      <pre>{{ promiseValue | async }}</pre>
+    </p-fieldset>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<h1>Dragon Ball Z Personajes</h1>
+<hr>
+
+<div class="row">
+
+  <div class="col">
+    <!--
+      characterList = es el nombre de la propiedad en el list.component.ts (Component Child)
+      characters = es el arreglo de valores definidos en el main-page.component.ts (Component Father)
+
+      (onDeleteCharacter) = definicion del evento a escuchar, el cual seria enviado desde un componente hijo.
+      (receiveCharacterById) = funcion que se ejecutara cuando el evento sea ejecutado.
+    -->
+    <dbz-list
+      [characterList]="characters"
+      (onDeleteCharacter)="receiveCharacterById($event)">
+    </dbz-list>
+  </div>
+
+  <div class="col">
+    <dbz-add-character (onNewCharacter)="receiveNewCharacter($event)"></dbz-add-character>
+  </div>
+</div>
